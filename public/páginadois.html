@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Nosso Futuro Juntos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="futuro-card">
+        <h1>Nosso Futuro Juntos</h1>
+        <p>
+            Sonho com o nosso lar cheio de amor, alegria e magia.<br>
+            Teremos uma casa com jardins floridos, onde cada detalhe conta nossa história.<br>
+            Logo na entrada, dois ipês: um amarelo e um roxo, celebrando nossas cores favoritas e nossa união.<br>
+            Um lago de carpas dará boas-vindas, trazendo paz e sorte.<br>
+            E dentro de casa, a decoração será inspirada nos filmes do Studio Ghibli, com um estúdio criativo cheio de referências encantadas.
+        </p>
+        <div class="futuro-ilustra">
+            <div class="ipe amarelo" id="ipeAmarelo" title="Clique!">
+                <div class="ipe-copa"></div>
+                <div class="ipe-tronco"></div>
+            </div>
+            <div class="ipe roxo" id="ipeRoxo" title="Clique!">
+                <div class="ipe-copa"></div>
+                <div class="ipe-tronco"></div>
+            </div>
+            <div class="lago" id="lagoCarpas" title="Clique para ver as carpas pularem!">
+                <div class="carpa" id="carpa1"></div>
+                <div class="carpa carpa2" id="carpa2"></div>
+            </div>
+            <span class="ghibli" id="totoro" title="Totoro">🌱</span>
+            <span class="ghibli" id="lacinho" title="Lacinho">🎀</span>
+            <span class="ghibli" id="kodama" title="Kodama">👻</span>
+        </div>
+        <div class="casamento">
+            <b>Nosso casamento será em um campo de girassóis,</b><br>
+            com a luz dourada do sol e a energia das flores.<br>
+            A decoração será toda inspirada no universo Ghibli,<br>
+            com detalhes mágicos, personagens e muita fantasia.<br>
+            <div class="girassol-campo">
+                <div class="girassol"><div class="girassol-centro"></div></div>
+                <div class="girassol"><div class="girassol-centro"></div></div>
+                <div class="girassol"><div class="girassol-centro"></div></div>
+                <div class="girassol"><div class="girassol-centro"></div></div>
+                <div class="girassol"><div class="girassol-centro"></div></div>
+            </div>
+            <br>
+            <span style="font-size:1.2em;">Vai ser um sonho, do jeitinho que a gente merece! 💜💛</span>
+        </div>
+        <div class="msg-interativa" id="msgInterativa"></div>
+        <button class="btn-voltar" onclick="window.location.href='index.html'">
+            &larr; Voltar para a nossa história
+        </button>
+    </div>
+    <script>
+        // Mensagem interativa
+        const msg = document.getElementById('msgInterativa');
+        // Ipês
+        document.getElementById('ipeAmarelo').onclick = function() {
+            msg.innerHTML = "O Ipê amarelo representa a luz e alegria que você traz para minha vida! 💛";
+            this.classList.add('selected');
+            setTimeout(() => this.classList.remove('selected'), 1200);
+        };
+        document.getElementById('ipeRoxo').onclick = function() {
+            msg.innerHTML = "O Ipê roxo é a cor do nosso amor, forte e cheio de significado! 💜";
+            this.classList.add('selected');
+            setTimeout(() => this.classList.remove('selected'), 1200);
+        };
+        // Lago de carpas
+        document.getElementById('lagoCarpas').onclick = function() {
+            msg.innerHTML = "As carpas trazem sorte, prosperidade e muitos sonhos realizados!";
+            document.getElementById('carpa1').classList.add('jump');
+            document.getElementById('carpa2').classList.add('jump');
+            setTimeout(() => {
+                document.getElementById('carpa1').classList.remove('jump');
+                document.getElementById('carpa2').classList.remove('jump');
+            }, 900);
+        };
+        // Ghibli icons
+        document.getElementById('totoro').onclick = function() {
+            msg.innerHTML = "Totoro vai proteger nosso lar e nossos sonhos! 🌱";
+        };
+        document.getElementById('lacinho').onclick = function() {
+            msg.innerHTML = "Um lacinho para lembrar que tudo será sempre fofo e especial! 🎀";
+        };
+        document.getElementById('kodama').onclick = function() {
+            msg.innerHTML = "Kodamas trarão sorte e boas energias para nossa casa! 👻";
+        };
+        // Girassóis
+        document.querySelectorAll('.girassol').forEach((el, idx) => {
+            el.onclick = function() {
+                msg.innerHTML = `Girassol ${idx+1}: Que nossa vida seja sempre cheia de luz, alegria e cor! 🌻`;
+                el.style.boxShadow = "0 0 24px #f9d423cc";
+                setTimeout(() => el.style.boxShadow = "", 1000);
+            };
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia dos Namorados - Kayky & Thaina</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="chatbot.js" defer></script>
+</head>
+<body>
+    <div class="card">
+        <div class="collage">
+            <img src="https://i.imgur.com/WNruzgF.jpg" alt="Foto 1" class="foto-casal">
+            <img src="https://i.imgur.com/dfPtzNx.jpg" alt="Foto 2" class="foto-casal">
+            <img src="https://i.imgur.com/uXwtU71.jpg" alt="Foto 3" class="foto-casal">
+            <img src="https://i.imgur.com/w442Bna.jpg" alt="Foto 4" class="foto-casal">
+            <img src="https://i.imgur.com/E6O6gWm.jpg" alt="Foto 5" class="foto-casal">
+            <img src="https://i.imgur.com/yb62MrV.jpg" alt="Foto 6" class="foto-casal">
+            <img src="https://i.imgur.com/sOw3vG3.jpg" alt="Foto 7" class="foto-casal">
+        </div>
+        <div class="heart" id="heart">❤️</div>
+        <h1>Feliz Dia dos Namorados!</h1>
+        <p>
+            <p>Thaina,</p>
+                <p>Já são quase 3 anos ao seu lado, e cada dia é um novo motivo para sorrir.<br>
+                Em cada sorriso teu, encontro o meu abrigo.<br>
+                Em cada abraço, o mundo faz sentido.<br>
+                Te amar é poesia, é sonho, é canção,<br>
+                É ter o coração batendo forte na palma da mão.</p>
+                <p>Que a vida nos reserve sempre esse encanto,<br>
+                Que juntos possamos vencer qualquer pranto.<br>
+                Você é meu presente, meu riso, meu par,<br>
+                Meu hoje, meu sempre, meu eterno amar.</p>
+                <p><span style="color:#d72660; font-size:1.2em;">Te amo mais a cada dia! 💖</span></p>
+        <div class="assinatura">
+            Com todo meu amor,<br>
+            Kayky
+        </div>
+        <button class="btn-surpresa" id="btnSurpresa">Clique para uma surpresa 💌</button>
+        <div class="surpresa" id="surpresaMsg">
+            <b>Você é o meu maior presente!</b><br>
+            Obrigado por ser minha inspiração, minha alegria e meu amor.<br>
+            Que venham muitos outros dias dos namorados ao seu lado!<br>
+            <span style="font-size:1.5em;">💖</span>
+            <br><br>
+            <span style="font-size:1.1em;">Quase 3 anos juntos e eu só consigo te amar mais e mais!</span>
+            <div id="videoContainer" style="display:none; margin-top:18px;">
+                <iframe id="spotifyPlayer" style="border-radius:12px" src="" width="320" height="80" frameborder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"></iframe>
+            </div>
+            
+        </div>
+        <button class="btn-proxima" onclick="window.location.href='páginadois.html'">
+            Ir para o nosso futuro &rarr;
+        </button>
+    </div>
+    <div class="modal-img-bg" id="modalImg">
+        <button id="prevImg" class="modal-nav-btn" title="Anterior">&#8592;</button>
+        <img src="" alt="Foto ampliada" id="modalImgTag">
+        <button id="nextImg" class="modal-nav-btn" title="Próxima">&#8594;</button>
+    </div>
+    <div class="modal-img-bg" id="modalImg">
+        <button id="prevImg" class="modal-nav-btn" title="Anterior">&#8592;</button>
+        <img src="" alt="Foto ampliada" id="modalImgTag">
+        <button id="nextImg" class="modal-nav-btn" title="Próxima">&#8594;</button>
+    </div>
+    <script>
+        // Modal de imagem
+        // Guardar todas as imagens e índice atual
+        const fotos = Array.from(document.querySelectorAll('.foto-casal'));
+        let fotoAtual = 0;
+
+        function abrirModalImg(idx) {
+            fotoAtual = idx;
+            document.getElementById('modalImgTag').src = fotos[fotoAtual].src;
+            document.getElementById('modalImg').classList.add('active');
+        }
+
+        fotos.forEach((img, idx) => {
+            img.addEventListener('click', function() {
+                abrirModalImg(idx);
+            });
+            // Mensagem animada ao passar o mouse
+            img.addEventListener('mouseenter', function() {
+                let msg = document.createElement('div');
+                msg.className = 'foto-msg';
+                msg.innerText = 'Eu amo esse momento com você 💕';
+                img.parentElement.appendChild(msg);
+                setTimeout(() => { if(msg) msg.remove(); }, 1200);
+            });
+            img.addEventListener('mouseleave', function() {
+                let msg = img.parentElement.querySelector('.foto-msg');
+                if(msg) msg.remove();
+            });
+        });
+        document.getElementById('prevImg').addEventListener('click', function(e) {
+            e.stopPropagation();
+            fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length;
+            document.getElementById('modalImgTag').src = fotos[fotoAtual].src;
+        });
+        document.getElementById('nextImg').addEventListener('click', function(e) {
+            e.stopPropagation();
+            fotoAtual = (fotoAtual + 1) % fotos.length;
+            document.getElementById('modalImgTag').src = fotos[fotoAtual].src;
+        });
+        document.getElementById('modalImg').addEventListener('click', function(e) {
+            if (e.target === this || e.target === document.getElementById('modalImg')) {
+                this.classList.remove('active');
+            }
+        });
+        document.addEventListener('keydown', function(e) {
+            if (!document.getElementById('modalImg').classList.contains('active')) return;
+            if (e.key === "ArrowLeft") {
+                fotoAtual = (fotoAtual - 1 + fotos.length) % fotos.length;
+                document.getElementById('modalImgTag').src = fotos[fotoAtual].src;
+            }
+            if (e.key === "ArrowRight") {
+                fotoAtual = (fotoAtual + 1) % fotos.length;
+                document.getElementById('modalImgTag').src = fotos[fotoAtual].src;
+            }
+            if (e.key === "Escape") {
+                document.getElementById('modalImg').classList.remove('active');
+            }
+        });
+        // Surpresa interativa (toggle)
+        document.getElementById('btnSurpresa').addEventListener('click', function() {
+            const msg = document.getElementById('surpresaMsg');
+            const spotify = document.getElementById('spotifyPlayer');
+            const videoContainer = document.getElementById('videoContainer');
+            if(msg.style.display === 'block') {
+                msg.style.display = 'none';
+                this.innerText = 'Clique para uma surpresa 💌';
+                videoContainer.style.display = 'none';
+                spotify.src = "";
+            } else {
+                msg.style.display = 'block';
+                this.innerText = 'Ocultar surpresa 💌';
+                videoContainer.style.display = 'block';
+                spotify.src = "https://open.spotify.com/embed/track/1Y3LN4zO1Edc2EluIoSPJN?utm_source=generator&autoplay=1";
+            }
+        });
+
+        // Corações subindo ao clicar no coração
+        document.getElementById('heart').addEventListener('click', function(e) {
+            for(let i=0;i<7;i++){
+                let heart = document.createElement('span');
+                heart.innerText = '💖';
+                heart.className = 'flying-heart';
+                heart.style.left = (e.clientX-30+Math.random()*60) + 'px';
+                heart.style.top = (e.clientY-20+Math.random()*20) + 'px';
+                document.body.appendChild(heart);
+                setTimeout(()=>heart.remove(), 1800+Math.random()*500);
+            }
+            this.classList.add('pulse-once');
+            setTimeout(() => this.classList.remove('pulse-once'), 600);
+        });
+    </script>
+    <style>
+        /* Adicione ao seu style.css */
+        .modal-nav-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.7);
+            border: none;
+            font-size: 2.2em;
+            color: #d72660;
+            border-radius: 50%;
+            width: 48px;
+            height: 48px;
+            cursor: pointer;
+            z-index: 1010;
+            transition: background 0.2s;
+        }
+        #prevImg { left: 24px; }
+        #nextImg { right: 24px; }
+        .modal-nav-btn:hover {
+            background: #fff0f6;
+        }
+    </style>
+</body>
+</html>

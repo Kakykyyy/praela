@@ -1,0 +1,583 @@
+/* Plano de fundo e fonte geral */
+body {
+    background: linear-gradient(135deg, #fbc2eb 0%, #a18cd1 60%, #f9d423 100%);
+    /* Roxo (#a18cd1), rosa claro (#fbc2eb), amarelo (#f9d423) */
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Cartão central */
+.card {
+    background: rgba(255,255,255,0.98);
+    border-radius: 28px;
+    box-shadow: 0 12px 40px 0 rgba(161, 140, 209, 0.18), 0 1.5px 8px #f9d42380;
+    padding: 48px 36px 36px 36px;
+    max-width: 480px;
+    width: 95vw;
+    text-align: center;
+    position: relative;
+    margin-top: 48px;
+    border: 2.5px solid #a18cd1;
+    transition: box-shadow 0.3s, border 0.3s;
+}
+
+.card:hover {
+    box-shadow: 0 20px 60px 0 rgba(161, 140, 209, 0.28), 0 2.5px 16px #f9d42380;
+    border: 2.5px solid #f9d423;
+}
+
+/* Ícone de coração animado */
+.heart {
+    color: #a18cd1;
+    font-size: 56px;
+    margin-bottom: 14px;
+    animation: pulse 1.2s infinite;
+    user-select: none;
+    cursor: pointer;
+    filter: drop-shadow(0 2px 8px #f9d42380);
+    transition: transform 0.2s, color 0.2s;
+}
+
+.heart:active {
+    transform: scale(1.2) rotate(-8deg);
+    color: #f9d423;
+}
+
+/* Animação de pulsar */
+@keyframes pulse {
+    0% { transform: scale(1);}
+    50% { transform: scale(1.18);}
+    100% { transform: scale(1);}
+}
+
+/* Títulos e parágrafos */
+h1 {
+    margin: 0 0 14px 0;
+    font-size: 2.4em;
+    color: #a18cd1;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 8px #f9d42360;
+}
+
+p {
+    font-size: 1.18em;
+    color: #444;
+    margin-bottom: 22px;
+    line-height: 1.6;
+}
+
+/* Assinatura final */
+.assinatura {
+    margin-top: 32px;
+    font-style: italic;
+    color: #a18cd1;
+    font-size: 1.08em;
+    letter-spacing: 0.5px;
+}
+
+/* Galeria de fotos */
+.collage {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 10px;
+    margin-bottom: 22px;
+    margin-top: 4px;
+    position: relative;
+}
+
+.foto-casal {
+    width: 100%;
+    border-radius: 14px;
+    object-fit: cover;
+    height: 100px;
+    cursor: pointer;
+    transition: transform 0.22s, box-shadow 0.22s, border 0.22s;
+    box-shadow: 0 2px 12px #a18cd180;
+    border: 2px solid #f9d423;
+    background: #fffbe6;
+}
+
+.foto-casal:hover {
+    transform: scale(1.10) rotate(-2deg);
+    box-shadow: 0 8px 32px #a18cd1a0;
+    z-index: 2;
+    border-color: #a18cd1;
+}
+
+/* Modal para fotos */
+.modal-img-bg {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: radial-gradient(circle at center, rgba(161,140,209,0.80), rgba(249,212,35,0.95));
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.3s;
+}
+
+.modal-img-bg.active {
+    display: flex;
+}
+
+.modal-img-bg img {
+    max-width: 92vw;
+    max-height: 88vh;
+    border-radius: 20px;
+    box-shadow: 0 8px 40px #a18cd1a0;
+    animation: zoomIn 0.3s;
+    border: 3px solid #f9d423;
+    background: #fff;
+}
+
+.modal-img-bg:after {
+    content: "✖";
+    position: absolute;
+    top: 24px;
+    right: 40px;
+    color: #fff;
+    font-size: 2.5rem;
+    cursor: pointer;
+    font-family: Arial, sans-serif;
+    z-index: 1001;
+    text-shadow: 0 2px 8px #a18cd1a0;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.8);}
+    to { transform: scale(1);}
+}
+
+/* Botão de navegação do modal */
+.modal-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(249,212,35,0.85);
+    border: none;
+    font-size: 2.2em;
+    color: #a18cd1;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    cursor: pointer;
+    z-index: 1010;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px #a18cd180;
+}
+#prevImg { left: 24px; }
+#nextImg { right: 24px; }
+.modal-nav-btn:hover {
+    background: #a18cd1;
+    color: #fffbe6;
+    box-shadow: 0 4px 16px #f9d423a0;
+}
+
+/* Botão de surpresa */
+.btn-surpresa {
+    margin-top: 20px;
+    background: linear-gradient(90deg, #a18cd1 40%, #f9d423 100%);
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    padding: 13px 34px;
+    font-size: 1.13em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #a18cd180;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    animation: pulseBtn 2.5s infinite;
+    letter-spacing: 0.5px;
+}
+
+.btn-surpresa:hover {
+    background: linear-gradient(90deg, #f9d423 40%, #a18cd1 100%);
+    color: #fff;
+    transform: scale(1.07);
+    box-shadow: 0 4px 16px #a18cd1a0, 0 0 16px #fffbe6;
+}
+
+@keyframes pulseBtn {
+    0%, 100% { transform: scale(1);}
+    50% { transform: scale(1.10);}
+}
+
+/* Mensagem da surpresa */
+.surpresa {
+    display: none;
+    margin-top: 22px;
+    background: #fffbe6;
+    border-radius: 16px;
+    padding: 22px 16px;
+    color: #a18cd1;
+    font-size: 1.13em;
+    box-shadow: 0 2px 16px #f9d42380;
+    animation: fadeIn 0.7s;
+    border: 1.5px solid #f9d423;
+    font-weight: 500;
+}
+
+/* Corações flutuantes */
+.flying-heart {
+    position: fixed;
+    font-size: 2.2em;
+    pointer-events: none;
+    animation: flyHeart 1.7s cubic-bezier(.4,1.7,.7,.7) forwards;
+    z-index: 9999;
+    filter: drop-shadow(0 2px 8px #a18cd180);
+}
+
+@keyframes flyHeart {
+    0% { opacity: 1; transform: translateY(0) scale(1);}
+    80% { opacity: 1;}
+    100% { opacity: 0; transform: translateY(-180px) scale(1.7) rotate(20deg);}
+}
+
+/* Texto no meio das fotos */
+.foto-msg {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: #fffbe6;
+    color: #a18cd1;
+    padding: 10px 22px;
+    border-radius: 16px;
+    font-size: 1.08em;
+    box-shadow: 0 2px 12px #f9d42380;
+    pointer-events: none;
+    z-index: 10;
+    animation: fadeIn 0.5s;
+    font-weight: 500;
+    border: 1.5px solid #f9d423;
+}
+
+/* Coração decorativo fixo */
+.decor-heart {
+    position: fixed;
+    bottom: 12px;
+    left: 12px;
+    font-size: 2em;
+    color: #a18cd1;
+    animation: pulse 2s infinite;
+    z-index: 500;
+}
+
+/* Chatbot */
+#chatbox {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: #fffbe6;
+    border: 2px solid #a18cd1;
+    border-radius: 18px;
+    box-shadow: 0 4px 24px #f9d42380;
+    width: 340px;
+    max-width: 95vw;
+    z-index: 9999;
+    overflow: hidden;
+}
+
+#chatbox button[type="submit"] {
+    background: #a18cd1;
+    color: #fff;
+    border: none;
+    border-radius: 0 0 12px 0;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+#chatbox button[type="submit"]:hover {
+    background: #d72660;
+}
+
+#chat-options button {
+    background: #fff;
+    color: #d72660;
+    border: 1px solid #ffb6c1;
+    border-radius: 12px;
+    padding: 5px 12px;
+    margin: 2px 2px 4px 0;
+    cursor: pointer;
+    font-size: 0.98em;
+    transition: background 0.2s, color 0.2s;
+}
+
+#chat-options button:hover {
+    background: #ffb6c1;
+    color: #fff;
+}
+
+/* Responsividade para celular */
+@media (max-width: 600px) {
+    .card {
+        width: 90%;
+        padding: 30px 20px 20px;
+    }
+
+    .collage {
+        grid-template-columns: 1fr 1fr;
+        gap: 6px;
+    }
+
+    .foto-casal {
+        height: 80px;
+    }
+
+    .modal-img-bg img {
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+}
+
+.music-player {
+    margin-top: 20px;
+    background: #fffbe6;
+    padding: 10px 20px;
+    border-radius: 16px;
+    box-shadow: 0 2px 8px #f9d42380;
+    text-align: center;
+    color: #a18cd1;
+    font-weight: bold;
+}
+.music-player audio {
+    width: 100%;
+    outline: none;
+    border-radius: 10px;
+    background: #fff;
+    box-shadow: 0 2px 8px #f9d42380;
+}
+
+.btn-proxima {
+    margin-top: 22px;
+    background: linear-gradient(90deg, #a18cd1 40%, #f9d423 100%);
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    padding: 13px 34px;
+    font-size: 1.13em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #a18cd180;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.5px;
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-proxima:hover {
+    background: linear-gradient(90deg, #f9d423 40%, #a18cd1 100%);
+    color: #fff;
+    transform: scale(1.07);
+    box-shadow: 0 4px 16px #a18cd1a0, 0 0 16px #fffbe6;
+}
+
+/* --- ESTILO DA PÁGINA DO FUTURO --- */
+body {
+    background: linear-gradient(135deg, #fbc2eb 0%, #a18cd1 60%, #f9d423 100%);
+}
+
+.futuro-card {
+    background: rgba(255,255,255,0.96);
+    border-radius: 28px;
+    box-shadow: 0 12px 40px 0 rgba(161, 140, 209, 0.18), 0 1.5px 8px #f9d42380;
+    padding: 44px 30px 36px 30px;
+    max-width: 520px;
+    width: 95vw;
+    text-align: center;
+    margin: 48px auto 0 auto;
+    border: 2.5px solid #a18cd1;
+    position: relative;
+}
+
+.futuro-card h1 {
+    color: #a18cd1;
+    font-size: 2.2em;
+    margin-bottom: 18px;
+}
+
+.futuro-card p {
+    color: #444;
+    font-size: 1.18em;
+    line-height: 1.7;
+    margin-bottom: 22px;
+}
+
+.futuro-ilustra {
+    margin: 28px 0 18px 0;
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    flex-wrap: wrap;
+}
+
+.ipe {
+    width: 60px;
+    height: 90px;
+    border-radius: 0 0 30px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.ipe-copa {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    margin-bottom: -10px;
+    transition: box-shadow 0.2s;
+}
+.ipe-tronco {
+    width: 14px;
+    height: 40px;
+    background: #a67c52;
+    border-radius: 8px;
+}
+.ipe.amarelo .ipe-copa { background: #ffe066; box-shadow: 0 0 16px #ffe06688;}
+.ipe.roxo .ipe-copa { background: #a18cd1; box-shadow: 0 0 16px #a18cd188;}
+.ipe.selected .ipe-copa { box-shadow: 0 0 32px 8px #f9d423cc, 0 0 32px 8px #a18cd1cc; }
+
+.lago {
+    width: 120px;
+    height: 50px;
+    background: #b2f0ff;
+    border-radius: 60px 60px 60px 60px / 30px 30px 30px 30px;
+    margin: 0 10px;
+    border: 2px solid #a18cd1;
+    position: relative;
+    cursor: pointer;
+    transition: box-shadow 0.2s;
+}
+.lago:hover {
+    box-shadow: 0 0 24px #ffe06688;
+}
+.carpa, .carpa2 {
+    position: absolute;
+    width: 22px;
+    height: 12px;
+    border-radius: 12px 12px 12px 12px / 8px 8px 8px 8px;
+    background: #fffbe6;
+    border: 1.5px solid #f9d423;
+    top: 18px;
+    left: 30px;
+    transform: rotate(-18deg);
+    transition: transform 0.3s;
+}
+.carpa2 {
+    left: 70px;
+    top: 28px;
+    background: #ffe066;
+    border: 1.5px solid #a18cd1;
+    transform: rotate(12deg);
+}
+.carpa.jump {
+    transform: translateY(-18px) rotate(-18deg) scale(1.2);
+}
+.carpa2.jump {
+    transform: translateY(-18px) rotate(12deg) scale(1.2);
+}
+
+.ghibli {
+    font-size: 2.2em;
+    margin: 0 6px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+.ghibli:hover {
+    transform: scale(1.25) rotate(-8deg);
+    filter: drop-shadow(0 0 8px #a18cd1);
+}
+
+.girassol-campo {
+    margin: 30px 0 0 0;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+.girassol {
+    width: 38px;
+    height: 38px;
+    background: #f9d423;
+    border-radius: 50%;
+    border: 2px solid #a18cd1;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+    transition: box-shadow 0.2s, transform 0.2s;
+}
+.girassol-centro {
+    width: 18px;
+    height: 18px;
+    background: #a67c52;
+    border-radius: 50%;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+.girassol:hover {
+    box-shadow: 0 0 18px #ffe066cc;
+    transform: scale(1.15) rotate(-8deg);
+}
+
+.casamento {
+    margin-top: 30px;
+    background: #fffbe6;
+    border-radius: 18px;
+    padding: 18px 14px;
+    color: #a18cd1;
+    font-size: 1.13em;
+    box-shadow: 0 2px 12px #f9d42380;
+    border: 1.5px solid #f9d423;
+    font-weight: 500;
+}
+
+.msg-interativa {
+    margin-top: 18px;
+    color: #f9d423;
+    font-size: 1.12em;
+    font-weight: bold;
+    min-height: 24px;
+    transition: opacity 0.3s;
+}
+
+.btn-voltar {
+    margin-top: 32px;
+    background: linear-gradient(90deg, #a18cd1 40%, #f9d423 100%);
+    color: #fff;
+    border: none;
+    border-radius: 22px;
+    padding: 13px 34px;
+    font-size: 1.13em;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 2px 8px #a18cd180;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 0.5px;
+    display: block;
+    width: 100%;
+    max-width: 320px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.btn-voltar:hover {
+    background: linear-gradient(90deg, #f9d423 40%, #a18cd1 100%);
+    color: #fff;
+    transform: scale(1.07);
+    box-shadow: 0 4px 16px #a18cd1a0, 0 0 16px #fffbe6;
+}
