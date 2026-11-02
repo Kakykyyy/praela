@@ -1,46 +1,65 @@
+<div align="center">
+
 # Praela
 
-Cartão digital romântico em HTML, CSS e JavaScript, servido por um pequeno servidor Express. O chatbot executa no navegador e seleciona respostas por palavras-chave e opções predefinidas.
+**Uma homenagem em forma de experiência web**
 
-## Instalação e execução
+![HTML](https://img.shields.io/badge/HTML-20232a?style=flat-square) ![CSS](https://img.shields.io/badge/CSS-20232a?style=flat-square) ![JavaScript](https://img.shields.io/badge/JavaScript-20232a?style=flat-square) ![Node.js](https://img.shields.io/badge/Node.js-20232a?style=flat-square) ![Express](https://img.shields.io/badge/Express-20232a?style=flat-square)
 
-Use Node.js compatível com Express 5 (18 ou superior; prefira uma versão LTS suportada).
+[Sobre](#sobre) · [Como executar](#como-executar) · [Documentação](DOCUMENTACAO.md)
+
+</div>
+
+---
+
+## Sobre
+
+Cartão digital romântico criado para reunir mensagens, imagens e interações em uma página personalizada. Um servidor Express distribui o site, enquanto o chatbot responde no navegador.
+
+## Destaques
+
+- Páginas com conteúdo e identidade visual personalizados.
+- Chatbot com respostas por palavras-chave e opções.
+- Links para músicas e lembranças.
+- Servidor local simples com porta configurável.
+
+## Como executar
+
+Clone o repositório:
 
 ```sh
 git clone https://github.com/Kakykyyy/praela.git
 cd praela
+```
+
+Requer Node.js compatível com Express 5. O chatbot usa respostas predefinidas e não precisa de chave de IA.
+
+```sh
 npm install
 npm start
 ```
 
-Abra http://localhost:3000. A variável de ambiente `PORT` substitui a porta padrão. O texto impresso pelo servidor não representa a URL local real; a aplicação escuta na porta configurada.
+Acesse [a aplicação local](http://localhost:3000).
 
-## Estrutura
+## Organização
 
-- `server.js`: Express, CORS e distribuição estática de `public/`.
-- `public/index.html`: entrada do site.
-- `public/páginadois.html`: página complementar.
-- `public/chatbot.js`: interação e respostas do chatbot.
-- `public/style.css`: estilos.
-- `package.json`: dependências e comando `start`.
+```text
+public/
+├── index.html       # Página inicial
+├── páginadois.html  # Conteúdo complementar
+├── chatbot.js       # Interações
+└── style.css        # Identidade visual
+server.js            # Servidor Express
+```
 
-## Personalização
+## Deixe com a sua identidade
 
-Edite textos e links nas páginas HTML, cores e layout no CSS, e respostas em `public/chatbot.js`. Preserve os caminhos relativos dos recursos e a acentuação dos nomes dos arquivos.
+Personalize textos e links nos arquivos HTML, ajuste cores em `public/style.css` e edite as respostas em `public/chatbot.js`. A variável `PORT` permite escolher outra porta para o servidor.
 
-Embora `openai` e `dotenv` estejam declarados como dependências, o servidor analisado apenas serve arquivos estáticos. Não há endpoint de IA implementado, e o chatbot atual não exige chave da OpenAI. O servidor também não carrega automaticamente um arquivo `.env`.
+## Documentação técnica
 
-## Publicação
+O [guia técnico](DOCUMENTACAO.md) reúne configuração, comportamento dos dados, limitações conhecidas e verificações manuais. As instruções foram elaboradas a partir da leitura do código; a execução dos projetos não foi validada nesta revisão.
 
-O conteúdo de `public/` pode ser servido por hospedagem estática. Para executar o servidor Node, configure a plataforma para instalar as dependências e iniciar com `npm start`, informando `PORT` quando necessário. Não há banco de dados.
+## Autor
 
-## Verificação manual
-
-Abra a página inicial, navegue para a página complementar e teste saudações, opções e links do chatbot. Confira imagens e estilos. O comando `npm test` é um placeholder que encerra com erro; não existe suíte automatizada.
-
-## Licença
-
-O `package.json` declara ISC, mas não há arquivo LICENSE na árvore analisada.
-
----
-Documentação baseada na leitura da branch principal em 2 de novembro de 2026. Os procedimentos não foram executados nesta revisão documental.
+Desenvolvido por [Kayky Erick · @Kakykyyy](https://github.com/Kakykyyy).
