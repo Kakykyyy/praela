@@ -1,47 +1,65 @@
-# 🌸 praela
+<div align="center">
 
-**Projeto:** Site/Cartão digital romântico  
-**Descrição:** Uma página especial criada *“pra minha mulher”* ❤️ — um site de cartão personalizado para expressar carinho, amor e atenção através de um endereço web único. :contentReference[oaicite:0]{index=0}
+# Praela
 
----
+**Uma homenagem em forma de experiência web**
 
-## 🚀 Sobre o Projeto
+![HTML](https://img.shields.io/badge/HTML-20232a?style=flat-square) ![CSS](https://img.shields.io/badge/CSS-20232a?style=flat-square) ![JavaScript](https://img.shields.io/badge/JavaScript-20232a?style=flat-square) ![Node.js](https://img.shields.io/badge/Node.js-20232a?style=flat-square) ![Express](https://img.shields.io/badge/Express-20232a?style=flat-square)
 
-Este projeto é uma aplicação web simples e romântica, construída em **JavaScript, HTML e CSS**, com um pequeno servidor em **Node.js** para servir a aplicação. A ideia é ter um **cartão digital acessível pela internet**, possivelmente com mensagens e elementos visuais pensados para a pessoa amada. :contentReference[oaicite:1]{index=1}
+[Sobre](#sobre) · [Como executar](#como-executar) · [Documentação](DOCUMENTACAO.md)
 
-👉 Acesse o site ao vivo: https://praela-three.vercel.app :contentReference[oaicite:2]{index=2}
-
----
-
-## 📁 O que tem no Repositório
-
-- **public/** — arquivos estáticos que compõem o site (HTML, CSS, imagens, etc.). :contentReference[oaicite:3]{index=3}  
-- **server.js** — servidor em Node.js para servir os arquivos da aplicação. :contentReference[oaicite:4]{index=4}  
-- **package.json** — dependências e scripts para rodar o projeto localmente. :contentReference[oaicite:5]{index=5}  
-- **node_modules/** — dependências instaladas (não comitadas idealmente). :contentReference[oaicite:6]{index=6}
+</div>
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Sobre
 
-🔹 **HTML** — Estrutura da página  
-🔹 **CSS** — Estilização visual  
-🔹 **JavaScript** — Comportamento dinâmico do site  
-🔹 **Node.js** — Servidor para hospedar a página localmente
+Cartão digital romântico criado para reunir mensagens, imagens e interações em uma página personalizada. Um servidor Express distribui o site, enquanto o chatbot responde no navegador.
 
----
+## Destaques
 
-## 🧩 Funcionalidades
+- Páginas com conteúdo e identidade visual personalizados.
+- Chatbot com respostas por palavras-chave e opções.
+- Links para músicas e lembranças.
+- Servidor local simples com porta configurável.
 
-- Página web estática romântica ❤️  
-- Servida por um servidor Node.js simples  
-- Pode ser hospedada facilmente (ex: Vercel, Netlify, Railway)
+## Como executar
 
----
+Clone o repositório:
 
-## 🏗️ Como Rodar o Projeto Localmente
-
-1. **Clone o repositório**
-
-```bash
+```sh
 git clone https://github.com/Kakykyyy/praela.git
+cd praela
+```
+
+Requer Node.js compatível com Express 5. O chatbot usa respostas predefinidas e não precisa de chave de IA.
+
+```sh
+npm install
+npm start
+```
+
+Acesse [a aplicação local](http://localhost:3000).
+
+## Organização
+
+```text
+public/
+├── index.html       # Página inicial
+├── páginadois.html  # Conteúdo complementar
+├── chatbot.js       # Interações
+└── style.css        # Identidade visual
+server.js            # Servidor Express
+```
+
+## Deixe com a sua identidade
+
+Personalize textos e links nos arquivos HTML, ajuste cores em `public/style.css` e edite as respostas em `public/chatbot.js`. A variável `PORT` permite escolher outra porta para o servidor.
+
+## Documentação técnica
+
+O [guia técnico](DOCUMENTACAO.md) reúne configuração, comportamento dos dados, limitações conhecidas e verificações manuais. As instruções foram elaboradas a partir da leitura do código; a execução dos projetos não foi validada nesta revisão.
+
+## Autor
+
+Desenvolvido por [Kayky Erick · @Kakykyyy](https://github.com/Kakykyyy).
